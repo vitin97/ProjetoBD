@@ -6,11 +6,11 @@ import model.Pedido;
 
 public interface IPedidoDao {
 
-	public boolean cadastrarProduto(Pedido p);
+	public boolean cadastrarPedido(Pedido p);
 	
-	public boolean excluirProduto(Pedido p);
+	public boolean excluirPedido(Pedido p);
 	
-	public boolean atualizarProduto(Pedido p);
+	public boolean atualizarPedido(Pedido p);
 	
 	public List<Pedido> recuperar ();
 	

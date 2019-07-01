@@ -11,7 +11,7 @@ public class PedidoDao implements IPedidoDao {
 	private Conexao con = Conexao.getInstancia();
 
 	@Override
-	public boolean excluirProduto(Pedido p) {
+	public boolean excluirPedido(Pedido p) {
 		int res = con.executarSql("delete from pedido where id = '" + p.getId() + "' ");
 		if (res > 0) {
 			return true;
@@ -21,8 +21,8 @@ public class PedidoDao implements IPedidoDao {
 	}
 
 	@Override
-	public boolean atualizarProduto(Pedido p) {
-		// TODO Auto-generated method stub
+	public boolean atualizarPedido(Pedido p) {
+		int res = con.executarSql("update pedido set  where id = '" + p.getId() + "' ");
 		return false;
 	}
 
@@ -52,7 +52,7 @@ public class PedidoDao implements IPedidoDao {
 	}
 
 	@Override
-	public boolean cadastrarProduto(Pedido p) {
+	public boolean cadastrarPedido(Pedido p) {
 		int res = con.executarSql("insert into pedido(data_pedido,valor,id_fun,id_forma,id_cli)" 
 				+ " values ('" + p.getData_pedido()+ "','" + p.getValor() + "','" + p.getIdFun() + "','" + p.getIdForma() +"','"+p.getCpf_cli()+ "')");
 				if (res > 0) {
