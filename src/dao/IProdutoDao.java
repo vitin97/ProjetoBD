@@ -12,6 +12,5 @@ public interface IProdutoDao {
 	public boolean atualizarProduto(Produto p);
 	
 	public List<Produto> recuperar ();
-	
-	public List<Produto> recuperarPorFiltro (Produto p);
+
 }

@@ -38,7 +38,7 @@ public class ProdutoDao implements IProdutoDao {
 
 	public boolean atualizarProduto(Produto p) {
 
-		int res = con.executarSql("update pedido set   where id = '" + p.getId() + "' ");
+		int res = con.executarSql("update pedido set tamanho="+p.getTamanho()+",preco="+p.getPreco()+",preco_custo="+p.getPrecoC()+",marca='"+p.getMarca()+"',modelo='"+p.getModelo()+"'  where id = " + p.getId());
 		if (res > 0) {
 			return true;
 		} else {

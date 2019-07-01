@@ -14,5 +14,4 @@ public interface IPedidoDao {
 	
 	public List<Pedido> recuperar ();
 	
-	public List<Pedido> recuperarPorFiltro (Pedido p);
 }
