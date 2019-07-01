@@ -1,3 +1,4 @@
+
 package dao;
 
 import java.sql.ResultSet;
@@ -53,7 +54,7 @@ public class PedidoDao implements IPedidoDao {
 		}
 	}
 
-
+	
 
 	@Override
 	public boolean cadastrarPedido(Pedido p) {
@@ -70,9 +71,41 @@ public class PedidoDao implements IPedidoDao {
 				} else {
 					return false;
 				}
+				
+				
 	}
 
-
+	public String recuperarFuncionario(int id) {
+		ResultSet rs = con.executarBusca("select nome from funcionario where id ="+id);
+		try {
+		String nome = rs.getString("nome");;
+		return nome;
+		}catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	public String recuperarForma(int id) {
+		ResultSet rs = con.executarBusca("select tipo from forma_de_pagamento where id ="+id);
+		try {
+		String nome = rs.getString("tipo");;
+		return nome;
+		}catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	public String recuperarCliente(int id) {
+		ResultSet rs = con.executarBusca("select nome from cliente where id ="+id);
+		try {
+		String nome = rs.getString("nome");;
+		return nome;
+		}catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 
 	
 
