@@ -7,6 +7,16 @@ public class Produto {
 	private double precoC;
 	private String marca;
 	private String modelo;
+	
+	public Produto(int id, int tamanho, double preco,double precoc,String marca, String modelo) {
+		this.id=id;
+		this.tamanho =tamanho;
+		this.preco =preco;
+		this.precoC = precoc;
+		this.marca = marca;
+		this.modelo=modelo;
+	}
+	
 	public int getId() {
 		return id;
 	}
