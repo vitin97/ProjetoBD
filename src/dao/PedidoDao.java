@@ -1,6 +1,7 @@
 package dao;
 
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +11,6 @@ import model.Pedido;
 public class PedidoDao implements IPedidoDao {
 	private Conexao con = Conexao.getInstancia();
 
-	@Override
 	public boolean excluirPedido(Pedido p) {
 		int res = con.executarSql("delete from pedido where id = '" + p.getId() + "' ");
 		if (res > 0) {
@@ -20,26 +20,30 @@ public class PedidoDao implements IPedidoDao {
 		}
 	}
 
-	@Override
 	public boolean atualizarPedido(Pedido p) {
-<<<<<<< refs/remotes/origin/master
-		int res = con.executarSql("update pedido set  where id = '" + p.getId() + "' ");
-=======
-		int res = con.executarSql("update pedido set   where id = '" + p.getId() + "' ");
->>>>>>> Correções
-		return false;
+		int res = con.executarSql("update pedido set idfun= " + p.getIdFun() + ",idforma=" + p.getIdForma() + ",valor=" + p.getValor() +"  where id = '" + p.getId() + "' "); 
+		if (res > 0) { 
+			return true; 
+		} else { 
+			return false; 
+		}
 	}
 
-	@Override
 	public List<Pedido> recuperar() {
 		ResultSet rs = con.executarBusca("select * from pedido");
 		List<Pedido> pedidos = new ArrayList<Pedido>();
 		
 		try {
+			SimpleDateFormat formato = new SimpleDateFormat( "yyyy/MM/dd" ); 
 			while (rs.next()) {
-				Pedido ped = new Pedido(0, null, 0, 0, 0, null);
-				rs.getString("id");
-				pedidos.add(ped);
+				String id = rs.getString("id");; 
+				String data = rs.getString("data_pedido");; 
+				String idFun = rs.getString("id_fun");; 
+				String idForma = rs.getString("id_forma");; 
+				String valor = rs.getString("valor");; 
+				String cpf_cli = rs.getString("id_cli");; 
+				Pedido ped = new Pedido(Integer.parseInt(id), formato.parse(data), Integer.parseInt(idFun), Integer.parseInt(idForma), Double.parseDouble(valor), cpf_cli); 
+				pedidos.add(ped); 
 			}
 		
 			return pedidos;
@@ -49,11 +53,7 @@ public class PedidoDao implements IPedidoDao {
 		}
 	}
 
-	@Override
-	public List<Pedido> recuperarPorFiltro(Pedido p) {
-		ResultSet rs = con.executarBusca("select * from pedido where id = "+ p.getId());
-		return null;
-	}
+
 
 	@Override
 	public boolean cadastrarPedido(Pedido p) {
