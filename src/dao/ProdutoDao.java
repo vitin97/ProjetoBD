@@ -15,7 +15,7 @@ public class ProdutoDao implements IProdutoDao {
 
 	public boolean cadastrarProduto(Produto p) {
 
-		int res = con.executarSql("insert into produto(id,tamanho,preco,preco_custo,marca,modelo) values (" + p.getId())+ "," + p.getTamanho() + "," + p.getPreco() + "," + p.getPrecoC() +",'"+p.getMarca()+ "','"+p.getModelo()+"')");    
+		int res = con.executarSql("insert into produto(id,tamanho,preco,preco_custo,marca,modelo) values (" + p.getId()+ "," + p.getTamanho() + "," + p.getPreco() + "," + p.getPrecoC() +",'"+p.getMarca()+ "','"+p.getModelo()+"')");    
 		
 		if (res > 0) {
 			return true;
